@@ -52,9 +52,16 @@ stale but has no contradicting source you can quote).
    cohorts, launch state, or a feature's existence. The brief's "Facts
    reviewers must not contradict" section owns these. A seat may say
    "defer to the brief" or "nothing was known at calibration"; it may not
-   assert a current state. Check the brief's own claims against the code
-   where you can (a package that is or is not in `package.json`, a route
-   that does or does not exist).
+   assert a current state.
+   Then audit the brief itself, claim by claim. Every component, vendor,
+   service, or data source the brief's product paragraph names (a
+   gateway, a model provider, a payments vendor, a database, a queue) is
+   confirmed in `package.json`, the lockfile, or the source, or it is a
+   finding. Check absence as carefully as presence: the first audit of
+   this skill verified that the providers the brief named were installed
+   and never checked that the "gateway" it also named was not. The
+   engineering and investor seats reason about data flow and
+   sub-processors from that paragraph.
 3. **Routes to nowhere.** Every reviewer, seat, person, or file a seat
    routes work to. A plugin seat must exist in the bench; a project
    reviewer must exist under `.claude/agents/`; a roster person must be

@@ -131,6 +131,26 @@ of fact the first migration missed: what the product does not use,
 policies with effective dates, consent commitments, and standing
 exceptions. The README says to pin the marketplace to a tag.
 
+## Running the audit on the thing it came from
+
+Before releasing the skill I ran its instructions against the same
+project's configuration, with the second review's items still unfixed.
+It returned thirteen findings. It caught residue my own fix of the first
+review had missed: the engineering seat still said schema changes "pair
+with a `drizzle-kit push`" in the paragraph describing how its engineer
+thinks, an admin-merge rule the project reversed in July, three roster
+people who do not exist, and a "pre-launch" claim about a product with
+live pricing. It also found a defect in the plugin itself: the brief
+said the project has no findings ledger, and the plugin's log-finding
+skill would have created one anyway. That is fixed in 0.3.1.
+
+It missed the one outright error the project's own agent had found, the
+gateway that does not exist. It verified that the providers the brief
+named were installed and never checked that the gateway it also named
+was absent. Check 2 now says to audit the product paragraph claim by
+claim, absence as carefully as presence. One run, one miss, one fix; the
+skill is a reviewer, and the rule about reviewers applies to it.
+
 ## What I would not claim
 
 The comparison is one run per pair on two artifacts. It shows the seats

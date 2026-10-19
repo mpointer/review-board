@@ -21,11 +21,18 @@ task has momentum and the finding feels like a detour.
 
 ## Where the ledger is
 
-`${CLAUDE_PROJECT_DIR}/.claude/review-board/board.md` names it under "Where
-things live." Default: `${CLAUDE_PROJECT_DIR}/docs/findings-ledger.md`. If
-it does not exist, create it from
-`${CLAUDE_PLUGIN_ROOT}/templates/findings-ledger.md` and remove the example
-entry.
+Read `${CLAUDE_PROJECT_DIR}/.claude/review-board/board.md` first. Its
+"Where things live" section names the ledger, and it may say the project
+has none: "Findings ledger: none, file with `gh issue`" or "findings go
+to Linear." When it does, that is the instruction. Do not create a ledger
+file; file the finding the way the brief says, with the same five parts
+below, and tell the decider where it went. The brief outranks this
+skill's default.
+
+With no brief, or a brief that names a path: default
+`${CLAUDE_PROJECT_DIR}/docs/findings-ledger.md`. If it does not exist,
+create it from `${CLAUDE_PLUGIN_ROOT}/templates/findings-ledger.md` and
+remove the example entry.
 
 ## When to use it
 

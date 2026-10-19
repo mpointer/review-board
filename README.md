@@ -57,7 +57,7 @@ without a reviewable diff there:
 {
   "enabledPlugins": { "review-board@review-board": true },
   "extraKnownMarketplaces": {
-    "review-board": { "source": { "source": "github", "repo": "mpointer/review-board", "ref": "v0.3.0" } }
+    "review-board": { "source": { "source": "github", "repo": "mpointer/review-board", "ref": "v0.3.1" } }
   }
 }
 ```

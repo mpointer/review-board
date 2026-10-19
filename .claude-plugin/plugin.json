@@ -1,7 +1,7 @@
 {
   "name": "review-board",
   "displayName": "Review Board",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A bench of named reviewers that return named votes, declare what they do not own, label every finding evidence-backed or judgment, and state the strongest objection to their own answer. Plus the skills that run them: named-vote review, focus group, persona generator, communication contract, copy filter, findings ledger.",
   "author": {
     "name": "Mike Pointer",

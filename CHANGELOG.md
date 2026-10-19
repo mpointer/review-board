@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.3.1] - 2026-10-19
+
+- log-finding reads the brief first and honors "Findings ledger: none":
+  it files the finding where the brief says instead of creating a ledger
+  the project forbade. Found by running seat-audit against the first
+  migrated project.
+- seat-audit check 2 now audits the brief's own product paragraph claim by
+  claim, absence as well as presence, after the first run verified the
+  providers a brief named and missed a gateway it also named that does
+  not exist.
+- README pin example updated to v0.3.1.
+
 ## [0.3.0] - 2026-10-19
 
 - New skill `seat-audit`: audits the brief, seat files, matrix, and
