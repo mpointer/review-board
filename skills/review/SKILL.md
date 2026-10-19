@@ -74,7 +74,13 @@ every surface type for a reason.
 
 ## Step 4: assemble the decision package
 
-Return it before any Edit or Write call. It must include, in this order:
+Return it before any Edit or Write call. The package is the message that
+ends your turn, in full: if you logged findings, hit a tool you could not
+use, or need to ask the decider something, do that first and then restate
+the whole package last, table included. A vote table that appears three
+messages up and a final message that only summarizes it fails the
+standard, because the decider reads the last message. It must include, in
+this order:
 
 1. **Verdict** in one line: Approve / Revise / Reject, with the tally
    (for example "4 approve, 2 approve with revision, 0 reject").
@@ -89,7 +95,11 @@ Return it before any Edit or Write call. It must include, in this order:
    comes from (a reaction versus a structure, the sender versus the
    receiver, measurement versus mapping).
 6. **Carried findings**: anything a reviewer raised that is real and out of
-   scope. Log each with `/review-board:log-finding` in this same turn.
+   scope. Log each with `/review-board:log-finding` in this same turn when
+   a file-editing tool is available; when it is not, list them here in
+   ledger form (title, file and line, cost, provenance) and say they are
+   unlogged.
+7. **What I need from the decider**, if anything, as numbered questions.
 
 ## Step 5: wait
 

@@ -16,4 +16,4 @@ bench has been in daily use since May 2026.
 - Templates for the project brief, voice profile, sign-off matrix, persona,
   and findings ledger.
 - Twelve example focus-group personas for a student career product.
-- Eval cases for the review and copy-filter skills.
+- Eval cases for the review, copy-filter, and log-finding skills. All three score 1.0 locally (one run each, ablation none, Sonnet judge).

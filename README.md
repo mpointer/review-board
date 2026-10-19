@@ -134,11 +134,23 @@ boundaries, evidence labels, strongest-objection step, no em dashes,
 manifest and marketplace agree) and `claude plugin validate --strict`. CI
 runs it on every push.
 
-`evals/` holds three cases for `claude plugin eval .`: the review skill
+`evals/` holds three cases for `claude plugin eval`: the review skill
 must return named votes and catch a "Complete" button at step 1 of 5; the
 copy filter must fail an em dash and consultant register and rewrite; the
-finding logger must write a well-formed ledger entry. Evals call a model
-and cost money, so they are run by hand, not in CI.
+finding logger must write a well-formed ledger entry. Run them from the
+plugin root:
+
+```
+claude plugin eval . --allow-tools Write Edit --judge-model sonnet
+```
+
+`--allow-tools Write Edit` is what lets the log-finding case write the
+ledger (a Bash grant would also need a sandbox backend on the machine).
+`--judge-model sonnet` is worth the extra cents on the review case: the
+default judge split on a correct vote table because the tally was phrased
+unusually. All three cases scored 1.0 on 2026-10-19 (one run each,
+ablation none, about $0.40 for the suite). Evals call a model and cost
+money, so they are run by hand, not in CI.
 
 ## Companion projects
 
