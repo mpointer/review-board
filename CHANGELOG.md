@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.1] - 2026-10-19
+
+- Directory listing fields in the manifest (icon, documentation and support
+  URLs) and a README section stating what the plugin runs, reads, and sends.
+  No behavior change.
+
 ## [0.1.0] - 2026-10-19
 
 First public release. Extracted from two production repositories where the

@@ -152,6 +152,28 @@ unusually. All three cases scored 1.0 on 2026-10-19 (one run each,
 ablation none, about $0.40 for the suite). Evals call a model and cost
 money, so they are run by hand, not in CI.
 
+## What this plugin runs, reads, and sends
+
+Nothing runs on install. The plugin has no hooks, no MCP servers, no
+executables, and no scripts that Claude Code runs on its own. It is
+Markdown: twelve agent files, seven skill files, templates, and examples.
+
+- **Reads**: the files you point a reviewer at, and the project's own
+  `.claude/review-board/` and `.claude/agents/fg-*.md` files when they
+  exist. Every agent is restricted to Read, Grep, and Glob.
+- **Writes**: only when you run a skill that says so. `setup` writes
+  `.claude/review-board/`, `persona` writes one agent file, `log-finding`
+  appends to the findings ledger. The review, focus-group, copy-filter,
+  and contract skills write nothing.
+- **Fetches**: the `adversary` and `other-side` agents also have WebFetch,
+  so they can read a public competitor page or a job posting you ask them
+  to compare against. They fetch nothing unless the review calls for it.
+- **Sends**: nothing. No telemetry, no network calls of its own, no
+  credentials asked for or read.
+
+`scripts/check.sh` and `evals/` are for the plugin's own CI and are never
+run by Claude Code on your behalf.
+
 ## Companion projects
 
 The same discipline, applied to machine determinations rather than human

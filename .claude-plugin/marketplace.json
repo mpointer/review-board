@@ -1,13 +1,16 @@
 {
   "name": "review-board",
   "description": "Review Board: named reviewers, named votes, declared ownership.",
-  "owner": { "name": "Mike Pointer", "email": "mpointer@gmail.com" },
+  "owner": {
+    "name": "Mike Pointer",
+    "email": "mpointer@gmail.com"
+  },
   "plugins": [
     {
       "name": "review-board",
       "source": "./",
       "description": "A bench of named reviewers that return named votes, declare what they do not own, label every finding evidence-backed or judgment, and state the strongest objection to their own answer.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "category": "productivity"
     }
   ]
