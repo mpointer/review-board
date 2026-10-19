@@ -1,0 +1,57 @@
+{
+  "_comment": "Which reviewers must sign off before an artifact reaches the decider. Single source of truth: the review and contract skills read it. Reviewer names are plugin agents (review-board:<name>), project agents (.claude/agents/<name>.md), or skills.",
+  "rule": "Every artifact that needs a sign-off runs its required reviewers BEFORE it reaches the decider, and is presented WITH the named votes attached, never instead of them.",
+  "artifacts": [
+    {
+      "type": "user-facing-copy",
+      "trigger": "any label, prompt, helper text, button, banner, error, empty state, aria string, or coaching line",
+      "reviewers": ["copy-filter"]
+    },
+    {
+      "type": "user-facing-surface",
+      "trigger": "any change a user can SEE or OPERATE: a new or edited component, layout, interaction, a visual signal (border, color, icon, badge), a button label, or a state (empty, loading, error, toggle, back button)",
+      "reviewers": ["ux-lead", "skeptical-user", "copy-filter (on any strings)"],
+      "notes": "Trigger on user-facing SURFACE, not on the word 'feature'. The recurring bites are small edits to existing surfaces. The only exemption is provably-no-surface work, attested inline with // REFACTOR_ONLY: <reason>."
+    },
+    {
+      "type": "communication-contract",
+      "trigger": "any Communication Contract for a new feature or a significant UI change",
+      "reviewers": ["ux-lead", "flow", "copy-filter (on the strings)"]
+    },
+    {
+      "type": "multi-step-flow",
+      "trigger": "any multi-screen sequence, signup-to-activated path, handoff between two people, or empty state that waits on someone else",
+      "reviewers": ["flow", "follow-through", "skeptical-user"]
+    },
+    {
+      "type": "assessment-or-score",
+      "trigger": "a question, answer set, rubric, scale, classifier label, or any number that reaches a person as a judgment about them or their work",
+      "reviewers": ["measurement", "justified-output"]
+    },
+    {
+      "type": "engineering-change",
+      "trigger": "schema, migration, infrastructure, secrets, auth, PII, anything irreversible in production",
+      "reviewers": ["engineering-risk", "architecture-longview"]
+    },
+    {
+      "type": "strategy-decision",
+      "trigger": "sequencing, pricing, channel, go-to-market, or build-vs-pass decisions",
+      "reviewers": ["investor", "adversary"]
+    },
+    {
+      "type": "partner-or-founder-facing",
+      "trigger": "anything the founder or a partner will read as if it came from them: emails, decision memos, marketing pages, product write-ups",
+      "reviewers": ["founder-voice"]
+    },
+    {
+      "type": "sent-to-a-third-party",
+      "trigger": "anything a recruiter, customer, reviewer, buyer, or regulator will receive and judge",
+      "reviewers": ["other-side"]
+    }
+  ],
+  "recurring_bite_categories": [
+    "button-label and commit-verb changes on existing surfaces ('Complete' shown at 20% progress)",
+    "visual signals with no text (a border, color, icon, or badge with no label explaining it)",
+    "state transitions (a toggle that toggles nothing visible, a missing empty state, back-button behavior)"
+  ]
+}
