@@ -1,6 +1,7 @@
 ---
 name: copy-filter
-description: Run the voice filter on user-facing copy strings. Checks every string against the nine-point filter (would the owner say this, can they defend it, right length, person or consultant, trust, consistency) and the hard rules from the project's voice profile (no em dashes, no consultant register, reader-first, never sound like an AI). Returns PASS or FAIL per string with the exact issue and a rewrite. Use before any label, prompt, helper text, button, banner, error, empty state, toast, or coaching line ships.
+description: Check user-facing copy before it ships. Run this whenever someone asks whether a string, headline, subtitle, button, label, helper text, error, toast, email, or coaching line is good to go, reads well, or sounds right. Works with or without a project voice profile: the defaults are the nine-point filter (would the owner say this, can they defend it, right length, person or consultant, trust, consistency) plus the hard rules (no em dashes or en dashes, no consultant register such as leverage, robust, ensure, seamless, unlock, reader-first, never sound like an AI). Returns PASS or FAIL per string with the exact issue and a rewrite.
+when_to_use: "'check this copy', 'is this good to go', 'review this headline', 'does this subtitle work', 'before it ships', 'proofread this label', any request to judge a piece of user-facing text."
 argument-hint: [list of {label, string} pairs, or a file path]
 allowed-tools: Read Grep Glob
 ---

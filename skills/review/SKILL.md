@@ -1,6 +1,7 @@
 ---
 name: review
-description: Run a named-vote review. Dispatches the reviewers the sign-off matrix requires for this kind of change, in parallel, and returns a per-reviewer table of Approve / Approve with revision / Reject votes, the tally, the consensus pick, concrete implementation requirements with file:line targets, and the disagreements that almost split the bench. Use before shipping any change that touches a user-facing surface, a flow, a score, a schema, or a strategy decision. The decider will not accept "the team approves" without named votes.
+description: Get the team's view on a change before it ships, as named votes. Run this whenever someone asks whether a change is fine to ship, wants a review, a second opinion, or "the team's take" on a user-facing surface, a button or label change, a flow, a score, a schema, or a strategy decision. Dispatches the reviewers the sign-off matrix requires, in parallel, and returns a per-reviewer table of Approve, Approve with revision, or Reject votes, the tally, the consensus, concrete implementation requirements with file:line targets, and the disagreements that almost split the bench. Works without project configuration, on the default matrix. The decider will not accept "the team approves" without named votes.
+when_to_use: "'can you get the team's view', 'is this fine to ship', 'review this change', 'what would the reviewers say', 'second opinion on this UI', a button label or wording change on an existing screen, a new screen, a pricing or sequencing decision."
 argument-hint: [what is being reviewed: a path, a PR, or a one-line description]
 allowed-tools: Read Grep Glob Agent
 ---
