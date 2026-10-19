@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.0] - 2026-10-19
+
+- Seat calibration files. Every bench agent now reads
+  `.claude/review-board/seats/<agent>.md` after the brief, when it exists.
+  A seat file carries the project's calibration of that seat (who it is
+  modeled on, voice, incidents behind the rules, boundaries with the
+  project's own reviewers) and overrides the agent's defaults where they
+  overlap. This is what lets a project migrate a hand-calibrated in-repo
+  gate onto the plugin without losing the calibration. Template at
+  `templates/seat.md`; the setup skill offers to create seat files from
+  existing agent files.
+
 ## [0.1.1] - 2026-10-19
 
 - Directory listing fields in the manifest (icon, documentation and support

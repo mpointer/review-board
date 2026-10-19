@@ -116,12 +116,18 @@ stereotype. Copy any into `.claude/agents/` to use them, or run
                        contradict, standing rules, process rules
   signoff-matrix.json  which seats sign off on which artifact type
   voice.md             optional: the founder's voice, from real samples
+  seats/<agent>.md     optional: per-seat calibration, read by that agent
+                       after the brief and overriding its defaults
 .claude/agents/
   fg-*.md              focus-group personas
 docs/findings-ledger.md
 ```
 
-Templates for all of these are in `templates/`. The brief matters more
+Templates for all of these are in `templates/`. If you already have
+hand-calibrated review agents in `.claude/agents/`, move each one's body
+into `seats/<matching-agent>.md`: the plugin's agent reads it and behaves
+as the calibrated seat, and the old file can become a thin shell or go
+away. The brief matters more
 than it looks: a gate told the truth about what exists and what does not
 ("no paying users yet," "no instrument validated on a cohort") stops
 inventing. A confident wrong fact in the brief turns every gate into

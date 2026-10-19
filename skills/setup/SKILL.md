@@ -66,12 +66,27 @@ flags they have made. Start the calibration log with the date and the
 sample set. If no samples exist, write the file with the defaults section
 only and a calibration log entry that says "uncalibrated, defaults only."
 
-## Step 5: the findings ledger, if missing
+## Step 5: seat calibrations, from existing agents
+
+If `${CLAUDE_PROJECT_DIR}/.claude/agents/` already holds review agents
+that map onto bench seats (a founder gate, an engineering gate, a
+skeptical-user persona, an investor, a flow or completion or measurement
+specialist), offer to move each one's body into
+`${CLAUDE_PROJECT_DIR}/.claude/review-board/seats/<bench-agent>.md`, in
+the shape of `${CLAUDE_PLUGIN_ROOT}/templates/seat.md`. Keep every
+incident, quote, boundary, and calibration log entry; drop only the
+agent frontmatter and the generic "how to run a review" mechanics the
+plugin agent already carries. Never delete the original agent file in
+this step; say what the project can do with it (thin shell that points at
+the seat file, or removal once the plugin is enabled everywhere the
+project runs).
+
+## Step 6: the findings ledger, if missing
 
 If the brief names a ledger path and the file does not exist, create it
 from `${CLAUDE_PLUGIN_ROOT}/templates/findings-ledger.md`.
 
-## Step 6: report
+## Step 7: report
 
 One short block: the files written, with paths; the facts you were unsure
 about and wrote as questions in the file (search for `TODO`); and the one

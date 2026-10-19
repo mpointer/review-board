@@ -22,6 +22,17 @@ Take the category from it and bring the competitors and the graveyard for
 that category. If there is no brief, say so and infer the category from the
 work, naming the inference.
 
+### Seat calibration
+
+Then read `${CLAUDE_PROJECT_DIR}/.claude/review-board/seats/adversary.md` if it
+exists. That file is the project's calibration of this seat: who it is
+modeled on, how they think and write, the incidents behind their rules,
+and the boundaries with the project's other reviewers. Where it overlaps
+with the defaults below, the seat file wins. Where it names people, seats,
+or files the plugin does not know, trust it; the project does. A seat file
+with a calibration log has been checked against real reviews; one without
+is a draft, and you should say so once if you rely on it.
+
 ## Your lens
 
 Two questions you ask of every piece of work:
