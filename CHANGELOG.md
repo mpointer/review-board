@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.3.0] - 2026-10-19
+
+- New skill `seat-audit`: audits the brief, seat files, matrix, and
+  settings for drift (seat rules that contradict the brief or CLAUDE.md,
+  stale status claims, routes to reviewers that do not exist, output
+  contracts missing the board-wide steps, an unpinned plugin source).
+  Built from the nine findings an outside review made on the first real
+  migration.
+- Brief template: the "facts reviewers must not contradict" section now
+  names the four classes that migration missed (what the product does
+  not use, policies with effective dates, consent commitments, standing
+  exceptions), and the process-rules section says to copy from CLAUDE.md
+  and re-audit when it changes.
+- README: pin the marketplace source to a tag.
+- docs: "Moving eight calibrated review agents onto a plugin without
+  losing them", the write-up of the migration and the comparison.
+
 ## [0.2.0] - 2026-10-19
 
 - Seat calibration files. Every bench agent now reads

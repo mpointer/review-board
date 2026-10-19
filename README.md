@@ -49,6 +49,19 @@ then `claude plugin install review-board@review-board`. To try it without
 installing, clone the repo and start Claude Code with
 `--plugin-dir ./review-board`.
 
+Pin the marketplace to a tag in your project's `.claude/settings.json`
+so a push to this repository cannot change every gate in your project
+without a reviewable diff there:
+
+```json
+{
+  "enabledPlugins": { "review-board@review-board": true },
+  "extraKnownMarketplaces": {
+    "review-board": { "source": { "source": "github", "repo": "mpointer/review-board", "ref": "v0.3.0" } }
+  }
+}
+```
+
 Then, once per project:
 
 ```
@@ -90,6 +103,7 @@ skill pick the seats from the sign-off matrix.
 | `/review-board:setup` | Bootstraps `.claude/review-board/` from the templates by asking, not assuming. |
 | `/review-board:copy-filter <strings>` | PASS or FAIL per user-facing string against the nine-point filter and the hard rules (no em dashes, no consultant register, reader-first, never sound like an AI), with rewrites. |
 | `/review-board:contract <feature>` | A Communication Contract before any code: every state, label, visual treatment, interaction state, edge case, accessibility and responsive behavior, in tables, with named votes attached. |
+| `/review-board:seat-audit` | Reads the brief, every seat file, the matrix, and CLAUDE.md, and reports the drift a reviewer would otherwise inherit: seat rules that contradict the brief, stale status claims, routes to reviewers that do not exist, output contracts missing the board-wide steps, an unpinned plugin source. |
 | `/review-board:log-finding <sentence>` | Appends a finding to the ledger in the turn you noticed it: defect-named title, file and line, cost, provenance, status, owner. |
 
 ## Focus groups
@@ -179,6 +193,13 @@ Markdown: twelve agent files, seven skill files, templates, and examples.
 
 `scripts/check.sh` and `evals/` are for the plugin's own CI and are never
 run by Claude Code on your behalf.
+
+## Write-ups
+
+- [Moving eight calibrated review agents onto a plugin without losing them](docs/moving-calibrated-gates-onto-a-plugin.md):
+  the first real migration, the side-by-side comparison with the
+  original agents, and the nine findings an outside review made on the
+  seat files, which is where `seat-audit` came from.
 
 ## Companion projects
 

@@ -27,11 +27,26 @@ unless a focus-group persona is named instead.
 
 ## Facts reviewers must not contradict
 
-Things a reviewer could plausibly get wrong and must not. Examples:
+Things a reviewer could plausibly get wrong and must not. Four classes,
+each with an example; the first migration onto this plugin missed one of
+each class and an outside review caught them.
 
-- There are no paying users yet. Never state or estimate a count.
-- No instrument in this product has been validated on a real cohort.
-- Prices are set by the partners, not by copy; do not propose new prices.
+- **What exists and what does not.** "There are no paying users yet.
+  Never state or estimate a count." "No instrument has been validated on
+  a real cohort." Also what the product does NOT use: a reviewer who
+  assumes a gateway, a vendor, or a data source that is not there reasons
+  about data flow from a fiction. Check `package.json` before writing
+  this section.
+- **Policies with effective dates.** "A 30-day refund for unused paid
+  stages took effect 2026-10-19; there is no money-back guarantee." A
+  reviewer that proposes copy contradicting the Terms is worse than one
+  that says nothing.
+- **Consent and privacy commitments.** "The advisory panel's members are
+  minors: no names in any artifact." "A teenager approves before a parent
+  sees their work." These bind every seat, not only the privacy one.
+- **Standing exceptions.** "Super admins can do everything." A seat that
+  flags an intended bypass as a defect wastes the decider's time and its
+  own credibility.
 
 ## Standing rules
 
