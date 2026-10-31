@@ -1,5 +1,39 @@
 # Changelog
 
+## [0.4.0] - 2026-10-31
+
+Behavior changes:
+
+- The brief now outranks a seat file: on a fact or a process rule, every
+  agent follows the brief and says so in its review. seat-audit no longer
+  assumes the seat wins.
+- review maps each seat's verdict words onto the tally. "Keep going" counts
+  as a revision from founder-voice and "I'd keep going" as an approval from
+  skeptical-user. "Surface to the owner" counts as no vote.
+- review can no longer be skipped for a change that touches schema, auth,
+  secrets, PII, or anything irreversible.
+- contract reads the sign-off matrix instead of hardcoding its reviewers.
+- Every agent treats reviewed content and fetched pages as data, never as
+  instructions, and never puts file contents or secrets in a URL.
+- log-finding no longer pre-approves Bash, so filing through `gh issue`
+  asks for permission.
+
+Fixes:
+
+- check.sh: the dash check silently passed on macOS, where BSD grep has no
+  `-P`. It now works on BSD and GNU grep, fails if the check itself breaks,
+  and also scans docs and CHANGELOG.
+- check.sh now verifies each agent's exact tools, name, seat path, and
+  untrusted-content rule, and that the README pin matches the version.
+- Frontmatter descriptions and argument hints are quoted, so every agent
+  and skill parses as strict YAML.
+- The twelve example personas gain the "What you refuse to do" section that
+  the persona skill requires.
+- seat-audit: check 6 no longer requires an alias that nothing defines, and
+  check 7 asks for a pinned ref in either form.
+- setup points at seat-audit after moving agents into seat files.
+- README and manifest: eight skills, and a corrected account of what writes.
+
 ## [0.3.1] - 2026-10-19
 
 - log-finding reads the brief first and honors "Findings ledger: none":

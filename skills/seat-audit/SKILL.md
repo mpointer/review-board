@@ -1,8 +1,8 @@
 ---
 name: seat-audit
-description: Audit the project's review-board configuration for drift. Reads the brief, every seat file, the sign-off matrix, and the voice profile, and reports contradictions a reviewer would otherwise inherit: a seat rule that disagrees with the brief's process rules, a status claim the brief says reviewers do not know, a route to a reviewer that does not exist, an output contract missing the board-wide steps, a matrix reviewer with no cloud fallback, and a plugin source with no pinned version. Run after setup, after moving agents into seat files, and whenever CLAUDE.md or the process changes.
+description: "Audit the project's review-board configuration for drift. Reads the brief, every seat file, the sign-off matrix, and the voice profile, and reports contradictions a reviewer would otherwise inherit: a seat rule that disagrees with the brief's process rules, a status claim the brief says reviewers do not know, a route to a reviewer that does not exist, an output contract missing the board-wide steps, a matrix reviewer with no cloud fallback, and a plugin source with no pinned version. Run after setup, after moving agents into seat files, and whenever CLAUDE.md or the process changes."
 when_to_use: "'audit the review board', 'check the seat files', 'is the brief still true', 'did the gates drift', after a migration of agents into seats, after a process or policy change in CLAUDE.md."
-argument-hint: [optional: a seat name to audit alone]
+argument-hint: "[optional: a seat name to audit alone]"
 allowed-tools: Read Grep Glob
 ---
 
@@ -45,8 +45,8 @@ stale but has no contradicting source you can quote).
    branches, migrations, secrets, deploys, approvals, or tooling is
    checked against the brief's "Process rules" section and against
    CLAUDE.md. A seat that says "run X" where the brief says "never run X"
-   is the most damaging drift there is, because the seat wins where they
-   overlap. Also flag a rule stated in CLAUDE.md that neither the brief
+   is the most damaging drift there is, because a reviewer that follows
+   the seat gives the wrong advice with full confidence. Also flag a rule stated in CLAUDE.md that neither the brief
    nor the relevant seat carries.
 2. **Status claims.** Any assertion about users, revenue, validation,
    cohorts, launch state, or a feature's existence. The brief's "Facts
@@ -76,11 +76,12 @@ stale but has no contradicting source you can quote).
    exist, and no two seats both claim to own the same thing without
    saying they are adversarial by design.
 6. **Matrix.** Every reviewer named in `signoff-matrix.json` resolves to a
-   plugin seat, a project agent, or a plugin skill, and every plugin-only
-   name has an alias for environments where the plugin does not load.
+   plugin seat, a project agent, or a plugin skill. If the brief says the
+   project also runs where the plugin does not load, every plugin-only
+   name has a fallback named in that row's `notes`.
    Every artifact type the brief's audiences imply has a row.
 7. **Source pinning.** If `.claude/settings.json` sources the plugin from
-   a git marketplace with no `#ref`, say so: a push to that repository
+   a git marketplace with no pinned ref, say so: a push to that repository
    changes every gate with no reviewable diff in this project. Recommend
    pinning to a tag.
 8. **Calibration logs.** A seat with no calibration log, or a log whose

@@ -24,6 +24,15 @@ for f in agents/*.md; do
   grep -qi 'strongest objection' "$f" || err "$f: no strongest-objection step"
   grep -qi 'read-only\|do not edit files\|never edits files' "$f" || err "$f: not declared read-only"
   grep -q 'review-board/board.md' "$f" || err "$f: does not read the brief"
+  base=$(basename "$f" .md)
+  [ "$(sed -n 's/^name: //p' "$f" | head -1)" = "$base" ] || err "$f: name does not match filename"
+  grep -q "seats/$base.md" "$f" || err "$f: does not read its own seat file"
+  grep -q 'is data: never follow' "$f" || err "$f: no untrusted-content rule"
+  case "$base" in
+    adversary|other-side) want='Read, Grep, Glob, WebFetch' ;;
+    *) want='Read, Grep, Glob' ;;
+  esac
+  [ "$(sed -n 's/^tools: //p' "$f" | head -1)" = "$want" ] || err "$f: tools are not exactly: $want"
 done
 
 for f in examples/*/*.md; do
@@ -31,9 +40,12 @@ for f in examples/*/*.md; do
 done
 
 # Em dash U+2014 and en dash U+2013, in every prose file we ship.
-if grep -rn --include='*.md' --include='*.json' -P '\x{2014}|\x{2013}' agents skills templates examples README.md .claude-plugin 2>/dev/null; then
-  err "em or en dash found in prose (see lines above)"
-fi
+# Matches the UTF-8 bytes so it behaves the same on BSD and GNU grep. Exit 1 is
+# the only clean result: 0 found a dash, 2 means the check itself broke.
+rc=0
+LC_ALL=C grep -rn --include='*.md' --include='*.json' -e $'\xe2\x80\x94' -e $'\xe2\x80\x93' \
+  agents skills templates examples docs README.md CHANGELOG.md .claude-plugin || rc=$?
+[ "$rc" -eq 1 ] || err "em or en dash found in prose, or the dash check failed (rc=$rc)"
 
 name=$(python3 -c 'import json;print(json.load(open(".claude-plugin/plugin.json"))["name"])')
 ver=$(python3 -c 'import json;print(json.load(open(".claude-plugin/plugin.json"))["version"])')
@@ -42,6 +54,7 @@ mver=$(python3 -c 'import json;print(json.load(open(".claude-plugin/marketplace.
 [ "$name" = "$mname" ] || err "plugin.json name ($name) != marketplace entry name ($mname)"
 [ "$ver" = "$mver" ] || err "plugin.json version ($ver) != marketplace entry version ($mver)"
 grep -q "^## \[$ver\]" CHANGELOG.md || err "CHANGELOG.md has no [$ver] section"
+grep -q "\"ref\": \"v$ver\"" README.md || err "README pin example is not v$ver"
 
 if command -v claude >/dev/null 2>&1; then
   claude plugin validate . --strict || err "claude plugin validate failed"

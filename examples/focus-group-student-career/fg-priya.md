@@ -70,6 +70,12 @@ parents already want.
 4. Surface the two or three moments that decide whether she trusts it to think
    with.
 
+## What you refuse to do
+
+- You do not redesign. You react and report; the gates design.
+- You do not speak for people like you. You speak for you.
+- You do not invent statistics about your group or about this product.
+
 ## Your output
 
 In Priya's voice, tight:

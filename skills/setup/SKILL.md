@@ -1,7 +1,7 @@
 ---
 name: setup
-description: Bootstrap the review board for this project. Creates .claude/review-board/ with the brief (board.md), the sign-off matrix, and optionally a voice profile for the founder-voice gate, by asking the decider a short set of questions and writing the files from the plugin's templates. Run once per project, and again when the product, the audiences, or the standing rules change. Every gate reads these files before it reviews anything.
-argument-hint: [optional: "brief", "matrix", or "voice" to regenerate one file]
+description: "Bootstrap the review board for this project. Creates .claude/review-board/ with the brief (board.md), the sign-off matrix, and optionally a voice profile for the founder-voice gate, by asking the decider a short set of questions and writing the files from the plugin's templates. Run once per project, and again when the product, the audiences, or the standing rules change. Every gate reads these files before it reviews anything."
+argument-hint: "[optional: \"brief\", \"matrix\", or \"voice\" to regenerate one file]"
 allowed-tools: Read Grep Glob Write AskUserQuestion
 ---
 
@@ -91,6 +91,8 @@ from `${CLAUDE_PLUGIN_ROOT}/templates/findings-ledger.md`.
 One short block: the files written, with paths; the facts you were unsure
 about and wrote as questions in the file (search for `TODO`); and the one
 sentence on how to run the first review (`/review-board:review <thing>`).
+If you moved any agent into a seat file, say to run
+`/review-board:seat-audit` first: moved rules carry their drift with them.
 
 ## Hard rules
 

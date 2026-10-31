@@ -1,7 +1,7 @@
 ---
 name: contract
-description: Produce a Communication Contract BEFORE any code is written for a new feature, UI change, module, or component. Enumerates every user-facing state, label, visual treatment, interaction state, edge case, accessibility behavior, and responsive behavior in a table the decider approves in plain English, so that no unexplained visual signal, mislabeled button, or undocumented state reaches them. Runs the required named votes before presenting. Mandatory for new surfaces.
-argument-hint: [feature name or one-line description]
+description: "Produce a Communication Contract BEFORE any code is written for a new feature, UI change, module, or component. Enumerates every user-facing state, label, visual treatment, interaction state, edge case, accessibility behavior, and responsive behavior in a table the decider approves in plain English, so that no unexplained visual signal, mislabeled button, or undocumented state reaches them. Runs the required named votes before presenting. Mandatory for new surfaces."
+argument-hint: "[feature name or one-line description]"
 allowed-tools: Read Grep Glob Agent
 ---
 
@@ -26,7 +26,9 @@ the communication to be designed before the CSS.
 
 Read `${CLAUDE_PROJECT_DIR}/.claude/review-board/board.md` for the
 audiences and standing rules, and the project's platform standards (a
-design-system doc, a components README) so section 9 can cite them.
+design-system doc, a components README) so section 9 can cite them. Read
+`${CLAUDE_PROJECT_DIR}/.claude/review-board/signoff-matrix.json` too, or
+`${CLAUDE_PLUGIN_ROOT}/templates/signoff-matrix.json` when it is missing.
 
 ## Mandatory structure
 
@@ -88,10 +90,10 @@ and justify any deviation.
 
 1. Draft the contract with real strings. "Label TBD" is not a label.
 2. Run the required sign-offs BEFORE the decider sees it. A contract is a
-   UX artifact: per the sign-off matrix it needs named votes from
-   `review-board:ux-lead` and `review-board:flow` (run them through the
-   `review` skill, or dispatch them directly), plus a `copy-filter` pass on
-   every string in the states table. Present the contract WITH the votes
+   UX artifact: it needs named votes from every reviewer on the matrix's
+   `communication-contract` row (run them through the `review` skill, or
+   dispatch them directly), including the `copy-filter` pass on every
+   string in the states table. Present the contract WITH the votes
    attached, never instead of them.
 3. Lead with the contract. Start the response with
    `# Communication Contract: <Feature>` and the ten sections. Process

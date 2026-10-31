@@ -1,8 +1,8 @@
 ---
 name: review
-description: Get the team's view on a change before it ships, as named votes. Run this whenever someone asks whether a change is fine to ship, wants a review, a second opinion, or "the team's take" on a user-facing surface, a button or label change, a flow, a score, a schema, or a strategy decision. Dispatches the reviewers the sign-off matrix requires, in parallel, and returns a per-reviewer table of Approve, Approve with revision, or Reject votes, the tally, the consensus, concrete implementation requirements with file:line targets, and the disagreements that almost split the bench. Works without project configuration, on the default matrix. The decider will not accept "the team approves" without named votes.
+description: "Get the team's view on a change before it ships, as named votes. Run this whenever someone asks whether a change is fine to ship, wants a review, a second opinion, or \"the team's take\" on a user-facing surface, a button or label change, a flow, a score, a schema, or a strategy decision. Dispatches the reviewers the sign-off matrix requires, in parallel, and returns a per-reviewer table of Approve, Approve with revision, or Reject votes, the tally, the consensus, concrete implementation requirements with file:line targets, and the disagreements that almost split the bench. Works without project configuration, on the default matrix. The decider will not accept \"the team approves\" without named votes."
 when_to_use: "'can you get the team's view', 'is this fine to ship', 'review this change', 'what would the reviewers say', 'second opinion on this UI', a button label or wording change on an existing screen, a new screen, a pricing or sequencing decision."
-argument-hint: [what is being reviewed: a path, a PR, or a one-line description]
+argument-hint: "[what is being reviewed: a path, a PR, or a one-line description]"
 allowed-tools: Read Grep Glob Agent
 ---
 
@@ -46,7 +46,8 @@ only when its ownership plainly does not apply, and say so in the output.
 
 Skip the review only for a pure refactor with zero behavior change, a bug
 fix with no user-visible difference, tests, build config, or non-user-facing
-docs. When skipping, say `REFACTOR_ONLY: <one-sentence reason>` so the
+docs, and only when no matrix trigger matches: a change that touches schema,
+auth, secrets, PII, or anything irreversible is never exempt. When skipping, say `REFACTOR_ONLY: <one-sentence reason>` so the
 exemption is on the record. If in doubt, run the review; the cost of an
 unneeded review is small and the cost of a missed one is the decider
 catching it.
@@ -63,6 +64,16 @@ One Agent call per reviewer, all in the same turn. Each prompt must:
   **Reject** (specify why).
 - Ask for file:line citations on every claim about built surfaces.
 - Ask for the strongest objection to their own vote.
+
+Count votes this way. A seat's own verdict word goes in the table; the tally
+uses this mapping, because the words differ and "Keep going" means opposite
+things from `founder-voice` (not ready) and `skeptical-user` (would stay):
+
+- **Approve:** Approve, Ship it, I'd keep going, Fund it.
+- **Approve with revision:** Revise, Ship after fixes, Keep going, Fund after
+  fixes, Come back with data.
+- **Reject:** Reject, Hold, I'd bail, Pass.
+- **Surface to the owner** counts as no vote and goes to item 7 of the package.
 
 When there is a real design choice, list two to four options in every
 prompt so the votes are comparable. When the only question is ship-as-is or
