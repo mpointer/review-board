@@ -57,7 +57,7 @@ without a reviewable diff there:
 {
   "enabledPlugins": { "review-board@review-board": true },
   "extraKnownMarketplaces": {
-    "review-board": { "source": { "source": "github", "repo": "mpointer/review-board", "ref": "v0.3.1" } }
+    "review-board": { "source": { "source": "github", "repo": "mpointer/review-board", "ref": "v0.4.0" } }
   }
 }
 ```
@@ -176,15 +176,17 @@ money, so they are run by hand, not in CI.
 
 Nothing runs on install. The plugin has no hooks, no MCP servers, no
 executables, and no scripts that Claude Code runs on its own. It is
-Markdown: twelve agent files, seven skill files, templates, and examples.
+Markdown: twelve agent files, eight skill files, templates, and examples.
 
 - **Reads**: the files you point a reviewer at, and the project's own
   `.claude/review-board/` and `.claude/agents/fg-*.md` files when they
   exist. Every agent is restricted to Read, Grep, and Glob.
 - **Writes**: only when you run a skill that says so. `setup` writes
   `.claude/review-board/`, `persona` writes one agent file, `log-finding`
-  appends to the findings ledger. The review, focus-group, copy-filter,
-  and contract skills write nothing.
+  appends to the findings ledger, or files where the brief says, which can
+  be an external tracker and asks permission first. `review` calls
+  `log-finding` for carried findings. The focus-group, copy-filter,
+  contract, and seat-audit skills write nothing.
 - **Fetches**: the `adversary` and `other-side` agents also have WebFetch,
   so they can read a public competitor page or a job posting you ask them
   to compare against. They fetch nothing unless the review calls for it.

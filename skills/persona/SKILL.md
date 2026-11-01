@@ -1,7 +1,7 @@
 ---
 name: persona
-description: Create a focus-group persona as a project-level subagent file at .claude/agents/fg-<name>.md, in the standard structure the focus-group skill expects. Use when the project needs a new voice in its focus group: a specific user, buyer, or bystander whose reaction the team cannot otherwise get. Asks for the gap this person catches that no existing persona does, then writes one real person, not a demographic.
-argument-hint: [who this person is, in a sentence, and the gap they catch]
+description: "Create a focus-group persona as a project-level subagent file at .claude/agents/fg-<name>.md, in the standard structure the focus-group skill expects. Use when the project needs a new voice in its focus group: a specific user, buyer, or bystander whose reaction the team cannot otherwise get. Asks for the gap this person catches that no existing persona does, then writes one real person, not a demographic."
+argument-hint: "[who this person is, in a sentence, and the gap they catch]"
 allowed-tools: Read Grep Glob Write
 ---
 

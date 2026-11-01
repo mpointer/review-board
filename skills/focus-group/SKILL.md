@@ -1,7 +1,7 @@
 ---
 name: focus-group
-description: Run a focus group. Sends a surface (a page, a flow, a piece of copy, a pricing screen) to every focus-group persona the project has defined under .claude/agents/fg-*.md, or a named subset, in parallel, and returns each persona's reaction in their own voice, the bail points that recur across personas, the places where personas disagree, and the verdict split. Use when the question is "how do the real people we built this for react," as distinct from an expert gate's verdict.
-argument-hint: [surface to test, then optionally "with <persona>, <persona>"]
+description: "Run a focus group. Sends a surface (a page, a flow, a piece of copy, a pricing screen) to every focus-group persona the project has defined under .claude/agents/fg-*.md, or a named subset, in parallel, and returns each persona's reaction in their own voice, the bail points that recur across personas, the places where personas disagree, and the verdict split. Use when the question is \"how do the real people we built this for react,\" as distinct from an expert gate's verdict."
+argument-hint: "[surface to test, then optionally \"with <persona>, <persona>\"]"
 allowed-tools: Read Grep Glob Agent
 ---
 
