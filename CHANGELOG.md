@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.4.1] - 2026-11-01
+
+- review: logging a carried finding is the one write allowed before the
+  decider answers. The skill used to forbid any write and also require the
+  log in the same turn.
+- CI: read-only token, actions pinned by SHA, Claude CLI pinned.
+- Evals: log-finding-entry checks cost, provenance, status, and owner. New
+  cases cover the no-ledger brief and seat-audit drift.
+
 ## [0.4.0] - 2026-10-31
 
 Behavior changes:

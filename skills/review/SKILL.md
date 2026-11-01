@@ -85,7 +85,9 @@ every surface type for a reason.
 
 ## Step 4: assemble the decision package
 
-Return it before any Edit or Write call. The package is the message that
+Return it before any edit to the work under review. Logging a carried
+finding (item 6) is the one write allowed before the decider has answered.
+The package is the message that
 ends your turn, in full: if you logged findings, hit a tool you could not
 use, or need to ask the decider something, do that first and then restate
 the whole package last, table included. A vote table that appears three
